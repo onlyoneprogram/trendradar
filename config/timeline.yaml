@@ -19,7 +19,7 @@ periods:
     end: "18:00"
     analyze: false
     push: true
-    report_mode: "incremental"
+    report_mode: "current"
   evening_summary:
     start: "18:00"
     end: "23:00"
