@@ -929,6 +929,10 @@ class NewsAnalyzer:
         has_rss_content = bool(rss_items and len(rss_items) > 0)
         has_any_content = has_news_content or has_rss_content or bool(standalone_data)
 
+        # 检测"仅有独立展示区数据，无关键词/AI匹配"的情况
+        has_real_content = has_news_content or has_rss_content
+        only_standalone = bool(standalone_data) and not has_real_content
+
         # 计算热榜匹配条数
         news_count = sum(len(stat.get("titles", [])) for stat in stats) if stats else 0
         rss_count = sum(stat.get("count", 0) for stat in rss_items) if rss_items else 0
@@ -946,6 +950,16 @@ class NewsAnalyzer:
                 content_parts.append(f"RSS {rss_count} 条")
             total_count = news_count + rss_count
             print(f"[推送] 准备发送：{' + '.join(content_parts)}，合计 {total_count} 条")
+
+            # 仅有独立展示区数据（无关键词/AI匹配）→ 发"暂无关注"提示
+            if only_standalone:
+                print("[推送] 当前时段未检测到匹配的热点，发送'暂无关注信息'提示")
+                report_type = "暂无关注信息"
+                stats = []
+                rss_items = None
+                rss_new_items = None
+                standalone_data = None
+                ai_result = None
 
             # 调度系统决策
             if not schedule.push:
