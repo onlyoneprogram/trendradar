@@ -40,7 +40,13 @@ custom:
         - evening_summary
 
   week_map:
-    1-7: "all_day"
+    1: "all_day"
+    2: "all_day"
+    3: "all_day"
+    4: "all_day"
+    5: "all_day"
+    6: "all_day"
+    7: "all_day"
 
   overlap:
     policy: "error_on_overlap"
