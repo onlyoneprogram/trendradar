@@ -1,45 +1,46 @@
-default:
-  collect: true
-  analyze: false
-  push: false
-
-periods:
-  morning_briefing:
-    start: "07:30"
-    end: "09:00"
-    analyze: true
-    ai_mode: "current"
-    push: true
-    report_mode: "current"
-    once:
-      analyze: true
-      push: true
-  daytime_push:
-    start: "09:00"
-    end: "18:00"
+custom:
+  default:
+    collect: true
     analyze: false
-    push: true
-    report_mode: "current"
-  evening_summary:
-    start: "18:00"
-    end: "23:00"
-    analyze: true
-    ai_mode: "daily"
-    push: true
-    report_mode: "daily"
-    once:
+    push: false
+
+  periods:
+    morning_briefing:
+      start: "07:30"
+      end: "09:00"
       analyze: true
+      ai_mode: "current"
       push: true
+      report_mode: "current"
+      once:
+        analyze: true
+        push: true
+    daytime_push:
+      start: "09:00"
+      end: "18:00"
+      analyze: false
+      push: true
+      report_mode: "current"
+    evening_summary:
+      start: "18:00"
+      end: "23:00"
+      analyze: true
+      ai_mode: "daily"
+      push: true
+      report_mode: "daily"
+      once:
+        analyze: true
+        push: true
 
-day_plans:
-  all_day:
-    periods:
-      - morning_briefing
-      - daytime_push
-      - evening_summary
+  day_plans:
+    all_day:
+      periods:
+        - morning_briefing
+        - daytime_push
+        - evening_summary
 
-week_map:
-  1-7: "all_day"
+  week_map:
+    1-7: "all_day"
 
-overlap:
-  policy: "error_on_overlap"
+  overlap:
+    policy: "error_on_overlap"
