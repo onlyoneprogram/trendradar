@@ -228,7 +228,7 @@ class NewsAnalyzer:
 
         self.request_interval = self.ctx.config["REQUEST_INTERVAL"]
         self.report_mode = self.ctx.config["REPORT_MODE"]
-        self.frequency_file = None
+        self.frequency_file = "config/frequency_words.txt"
         self.filter_method = None  # None=使用全局配置 ctx.filter_method
         self.interests_file = None  # None=使用全局配置 ai_filter.interests_file
         self.rank_threshold = self.ctx.rank_threshold
@@ -1524,9 +1524,7 @@ class NewsAnalyzer:
         # 重新获取 mode_strategy，确保 report_type 与覆盖后的 report_mode 一致
         mode_strategy = self._get_mode_strategy()
 
-        # 设置默认频率词文件，仅当 schedule 指定时才覆盖
-        if not self.frequency_file:
-            self.frequency_file = "config/frequency_words.txt"
+        # 仅当 schedule 指定时才覆盖频率词文件
         if schedule.frequency_file:
             self.frequency_file = schedule.frequency_file
 
