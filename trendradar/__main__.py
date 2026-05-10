@@ -1524,7 +1524,9 @@ class NewsAnalyzer:
         # 重新获取 mode_strategy，确保 report_type 与覆盖后的 report_mode 一致
         mode_strategy = self._get_mode_strategy()
 
-        # 使用 schedule 决定的 frequency_file 覆盖默认值（仅当定时器指定时）
+        # 设置默认频率词文件，仅当 schedule 指定时才覆盖
+        if not self.frequency_file:
+            self.frequency_file = "config/frequency_words.txt"
         if schedule.frequency_file:
             self.frequency_file = schedule.frequency_file
 
