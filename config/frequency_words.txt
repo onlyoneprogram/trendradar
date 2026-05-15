@@ -17,7 +17,11 @@
 [Rokid]
 Rokid
 ARmaz Pro
+
+[Misa/祝铭明]
 祝铭明
+Misa
+Misa Zhu
 
 [XREAL]
 /\bXREAL\b/ => XREAL
