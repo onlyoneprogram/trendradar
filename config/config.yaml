@@ -127,6 +127,16 @@ rss:
       name: "雅虎财经"
       url: "https://finance.yahoo.com/news/rssindex"
 
+    - id: "vrtuoluo"
+      name: "VR陀螺"
+      url: "https://www.vrtuoluo.cn/feed"
+      max_age_days: 3
+
+    - id: "ifanr"
+      name: "爱范儿"
+      url: "https://www.ifanr.com/feed"
+      max_age_days: 2
+
     # 自定义源示例
     # - id: "custom-feed"
     #   name: "自定义源"
